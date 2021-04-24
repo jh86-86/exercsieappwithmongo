@@ -7,3 +7,7 @@ mongoDB. I will use Atlas. As it is my first time using a non-relational databas
 
  I will eventually dockerise it and deploy it using AWS.
 
+I will use css modules for styling.
+
+
+
