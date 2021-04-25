@@ -9,23 +9,25 @@ import CreateExercise from '../../Pages/CreateExercise';
 import CreateUser from '../../Pages/CreateUser';
 import EditExerciseList from '../../Pages/EditExerciseList';
 import ExerciseList from '../../Pages/ExerciseList';
-import Home from '../../Pages/Home'
+import Home from '../../Pages/Home';
+import css from './navbar.module.css';
 
 function Navbar(){
 return (
-    <Router>
+
+    <Router >
       <div>
-        <nav>
-          <ul>
+        <nav >
+          <ul className={css.navbar}>
             <li>
               <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/exerciseList">Event Tracker</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/editExercise">Edit Exercise</Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/createExercise">Create Exercise Log</Link>
             </li>
@@ -34,8 +36,9 @@ return (
             </li>
           </ul>
         </nav>
+        
 
- 
+        <div id="container">
         <Switch>
           <Route path="/createUser">
             <CreateUser />
@@ -53,8 +56,10 @@ return (
             <Home />
           </Route>
         </Switch>
+        </div>
       </div>
     </Router>
+    
   );
 };
 

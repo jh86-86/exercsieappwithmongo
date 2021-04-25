@@ -1,7 +1,8 @@
 
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css"
+import "react-datepicker/dist/react-datepicker.css";
+import axios from 'axios';
 
 export default class CreateExercise extends Component {
     constructor(props){
@@ -25,9 +26,15 @@ export default class CreateExercise extends Component {
     //hardcoded example prior to pulling from mongoDB
     //component did mount is  a react lifecycle method
     componentDidMount(){
-        this.setState({
-            users: ['test user'],
-            username: "test user",
+        let getReq=process.env.REACT_APP_ROUTE_GET_EXERCISE_TO_BACKEND;
+       axios.get(getReq)
+        .then(response => {
+            if(response.data.length > 0){
+                this.setState({
+                    users: response.data.map(user => user.username), //this will map all users to drop downbox
+                    username: response.data[0].username
+                })
+            }
         })
     }
 
@@ -55,6 +62,8 @@ export default class CreateExercise extends Component {
         });
     }
 
+    
+
     onSubmit(e){
         e.preventDefault(); //prevents default behaviour of HTML
         const exercise = {
@@ -63,7 +72,11 @@ export default class CreateExercise extends Component {
             duration: this.state.duration,
             date: this.state.date,
         }
+        let uri= process.env.REACT_APP_ROUTE_ADD_EXERCISE_TO_BACKEND
         console.log(exercise);
+
+        axios.post(uri, exercise)
+            .then(res => console.log(res.data));
         //window.location = '/'; //brings it back to home page
        alert('Exercise created')
     }
@@ -71,7 +84,7 @@ export default class CreateExercise extends Component {
 
     render() {
         return(
-            <div>
+            <div className="container">
                 <h3>Create New Exercise Log</h3>
                 <form onSubmit={this.onSubmit}>
                   <div className="form-group"> 
