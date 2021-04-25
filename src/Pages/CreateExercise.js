@@ -64,8 +64,8 @@ export default class CreateExercise extends Component {
             date: this.state.date,
         }
         console.log(exercise);
-        window.location = '/'; //brings it back to home page
-        console.log(exercise);
+        //window.location = '/'; //brings it back to home page
+       alert('Exercise created')
     }
     
 
