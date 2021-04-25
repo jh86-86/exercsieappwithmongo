@@ -11,3 +11,4 @@ I will use css modules for styling.
 
 
 
+using react components and constructors over state

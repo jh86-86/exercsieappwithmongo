@@ -21,16 +21,16 @@ return (
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/exerciseList">ExerciseList</Link>
+              <Link to="/exerciseList">Event Tracker</Link>
             </li>
             <li>
-              <Link to="/editExercise">EditExercise</Link>
+              <Link to="/editExercise">Edit Exercise</Link>
             </li>
             <li>
-              <Link to="/createExercise">CreateExercise</Link>
+              <Link to="/createExercise">Create Exercise Log</Link>
             </li>
             <li>
-              <Link to="/createUser">createUsers</Link>
+              <Link to="/createUser">create User</Link>
             </li>
           </ul>
         </nav>
