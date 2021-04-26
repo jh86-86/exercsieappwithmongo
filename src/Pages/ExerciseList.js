@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -18,7 +17,6 @@ const Exercise = props => (
     </tr>    
 )
 
-//    {/* <Link to={"/editExercise/"+props.exercise._id}>edit</Link>  can't get edit to work properly
 
 
 
@@ -34,8 +32,8 @@ export default class ExerciseList extends Component{
     }
 
     componentDidMount(){
-        let uri=process.env.REACT_APP_ROUTE_GET_EXERCISES_FOR_EXERCISELIST;
-        axios.get('http://localhost:5000/exercises/')
+        
+        axios.get('https://boostmk2.herokuapp.com/exercises/')
             .then(response => {
                 console.log(response.data)
                 this.setState({exercises: response.data})
