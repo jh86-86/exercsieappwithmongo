@@ -46,7 +46,7 @@ export default class ExerciseList extends Component{
     
 
     deleteExercise(id){
-         axios.delete("http://localhost:5000/exercises",+id)
+         axios.delete("http://localhost:5000/exercises/"+id)
             .then(res => console.log(res.data));
         this.setState({
             exercises: this.state.exercises.filter(el => el._id !== id)//will rerender page on change of state, when el does not equal id that we are deleting will remove that id
