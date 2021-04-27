@@ -5,7 +5,7 @@ import Map from '../components/LeafletMap/Leaflet'
 
 function Tracker(){
 
-const[route,setRoute]=useState([{lat:0, long:0 }]);
+const[route,setRoute]=useState([]);
 const[t,setT]=useState();
 
 
@@ -33,6 +33,7 @@ useEffect(()=> {
 
 
 function sendGeoData(){
+    setRoute({initialStart})
     if('geolocation' in navigator){
         console.log('geolocation available');
         navigator.geolocation.getCurrentPosition(position=>{  
