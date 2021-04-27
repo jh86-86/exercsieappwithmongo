@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import CreateExercise from '../../Pages/CreateExercise';
 import CreateUser from '../../Pages/CreateUser';
-import EditExerciseList from '../../Pages/EditExerciseList';
 import ExerciseList from '../../Pages/ExerciseList';
 import Home from '../../Pages/Home';
 import css from './navbar.module.css';
