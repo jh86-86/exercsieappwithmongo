@@ -1,15 +1,31 @@
 import React, {useState,useEffect} from 'react';
 //import Map from '../components/LeafletMap/Leaflet'
 //import axios from 'axios'
-import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
+import Map from '../components/LeafletMap/Leaflet'
 
 function Tracker(){
 
 const[route,setRoute]=useState([{lat:0, long:0 }]);
 const[t,setT]=useState();
 const[displayCoods,setDisplayCoords]=useState(false);
+const[mapArray,setMapArray]=useState([]);
 let count=0;
 
+const[initialStart, setInitialStart]=useState()
+
+useEffect(()=> {
+    function getStart(){
+     if('geolocation' in navigator){
+       console.log('geolocation available');
+       navigator.geolocation.getCurrentPosition(position=>{  
+           const lat= position.coords.latitude;
+           const long= position.coords.longitude;
+           setInitialStart([lat,long])
+            })
+        }
+    }
+   getStart();
+ } ,[]);
 
 
 function sendGeoData(){
@@ -26,24 +42,27 @@ function sendGeoData(){
 }
 
 function startTracking(){
-   
     setT(setInterval(sendGeoData, 1000));
 }
 
+
+const polyline = [
+    [51.50, -0.09],
+    [51.51, -0.1],
+    [51.58, -0.05],
+    [51.70, -0.1],
+    [51.80, -0.20],
+    [52, 0],
+]
 
 
 function stopTracking(){
     console.log('stopped tracking');
     setT(clearInterval(t));
+    setMapArray([<Map polyline={polyline} initialStart={initialStart}/> ]);
+
 }
 
-const polyline = [
-    [51.505, -0.09],
-    [51.51, -0.1],
-    [51.51, -0.12],
-  ]
-
-  const limeOptions = { color: 'lime' }
 
 
     return(
@@ -52,17 +71,11 @@ const polyline = [
         <button onClick={startTracking}>Start tracking</button>
         <button onClick={stopTracking}>Stop tracking</button>
 
-        <div id="mapid">
-        <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} style={{height:400, width:"100%"}}>
-  <TileLayer
-    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  />
-  <Polyline pathOptions={limeOptions} positions={polyline} />
-</MapContainer>
-</div>
-
-         {route.map(coords=> <li>Lat: {coords.lat} Long: {coords.long}</li> )} 
+        {/* <Map polyline={polyline} initialStart={initialStart}/> */}
+         {/* {route.map(coords=> <li>Lat: {coords.lat} Long: {coords.long}</li> )}  */}
+         {mapArray.map((journey, i) => (
+        <div key={i}>{journey}</div>
+      ))}
          <p id="time-ptag"></p>
     </div>
     )
