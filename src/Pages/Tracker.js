@@ -7,8 +7,10 @@ function Tracker(){
 
 const[route,setRoute]=useState([{lat:0, long:0 }]);
 const[t,setT]=useState();
-const[displayCoods,setDisplayCoords]=useState(false);
+
+
 const[mapArray,setMapArray]=useState([]);
+const[timer,setTimer]=useState(0);
 let count=0;
 
 const[initialStart, setInitialStart]=useState()
@@ -20,12 +22,14 @@ useEffect(()=> {
        navigator.geolocation.getCurrentPosition(position=>{  
            const lat= position.coords.latitude;
            const long= position.coords.longitude;
-           setInitialStart([lat,long])
+           setInitialStart([lat,long]);
+
             })
         }
     }
    getStart();
  } ,[]);
+
 
 
 function sendGeoData(){
@@ -36,14 +40,23 @@ function sendGeoData(){
             const long= position.coords.longitude;
             route.push({long,lat})
             console.log(route);
-            count=count++;
         })
     }
 }
 
 function startTracking(){
     setT(setInterval(sendGeoData, 1000));
+    setInterval(updateCount,1000);
+    
 }
+
+function updateCount(){
+    count++;
+    setTimer(count);
+    const timePtag= document.getElementById("time-ptag");
+    timePtag.innerText=timer;
+}
+
 
 
 const polyline = [
@@ -60,7 +73,9 @@ function stopTracking(){
     console.log('stopped tracking');
     setT(clearInterval(t));
     setMapArray([<Map polyline={polyline} initialStart={initialStart}/> ]);
-
+    setTimer(count);
+    const timePtag= document.getElementById("time-ptag");
+    timePtag.innerText=timer;
 }
 
 
