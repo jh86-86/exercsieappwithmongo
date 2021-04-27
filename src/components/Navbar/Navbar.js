@@ -10,6 +10,7 @@ import CreateUser from '../../Pages/CreateUser';
 import ExerciseList from '../../Pages/ExerciseList';
 import Home from '../../Pages/Home';
 import css from './navbar.module.css';
+import Tracker from '../../Pages/Tracker';
 
 function Navbar(){
 return (
@@ -33,12 +34,18 @@ return (
             <li>
               <Link to="/createUser">create User</Link>
             </li>
+            <li>
+              <Link to="/tracker">Track exercise</Link>
+            </li>
           </ul>
         </nav>
         
 
         <div id="container">
         <Switch>
+          <Route path="/tracker">
+            <Tracker />
+          </Route>
           <Route path="/createUser">
             <CreateUser />
           </Route>
