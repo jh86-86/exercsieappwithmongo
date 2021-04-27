@@ -51,8 +51,9 @@ function startTracking(){
 }
 
 function updateCount(){
-    count++;
+    count= count+1;
     setTimer(count);
+    console.log(count+""+timer);
     const timePtag= document.getElementById("time-ptag");
     timePtag.innerText=timer;
 }
