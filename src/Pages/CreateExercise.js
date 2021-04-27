@@ -26,8 +26,8 @@ export default class CreateExercise extends Component {
     //hardcoded example prior to pulling from mongoDB
     //component did mount is  a react lifecycle method
     componentDidMount(){
-    
-       axios.get("http://localhost:5000/users")
+        let uri=process.env.REACT_APP_ATLAS_URI_MON;
+       axios.get(`${uri}users`)
         .then(response => {
             if(response.data.length > 0){
                 this.setState({
@@ -72,10 +72,10 @@ export default class CreateExercise extends Component {
             duration: this.state.duration,
             date: this.state.date,
         }
-        let uri= "http://localhost:5000/exercises/add"
+        let uri=process.env.REACT_APP_ATLAS_URI_MON;
         console.log(exercise);
 
-        axios.post(uri, exercise)
+        axios.post(`${uri}exercises/add`, exercise)
             .then(res => console.log(res.data));
         //window.location = '/'; //brings it back to home page
        alert('Exercise created')

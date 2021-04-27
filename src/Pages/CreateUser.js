@@ -27,9 +27,9 @@ export default class CreateUser extends Component{
         }
 
         console.log(user);
-        const uri="https://boostmk2server.herokuapp.com/users/add";
+        let uri=process.env.REACT_APP_ATLAS_URI_MON;
         //never used axios before but have underthehood headers,options,method
-        axios.post(uri, user)
+        axios.post(`${uri}users/add`, user)
             .then(res => console.log(res.data));
 
        this.setState({
