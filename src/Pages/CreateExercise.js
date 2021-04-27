@@ -26,8 +26,8 @@ export default class CreateExercise extends Component {
     //hardcoded example prior to pulling from mongoDB
     //component did mount is  a react lifecycle method
     componentDidMount(){
-        let getReq=process.env.REACT_APP_ROUTE_GET_EXERCISE_TO_BACKEND;
-       axios.get(getReq)
+    
+       axios.get("http://localhost:5000/users")
         .then(response => {
             if(response.data.length > 0){
                 this.setState({
@@ -72,7 +72,7 @@ export default class CreateExercise extends Component {
             duration: this.state.duration,
             date: this.state.date,
         }
-        let uri= process.env.REACT_APP_ROUTE_ADD_EXERCISE_TO_BACKEND
+        let uri= "http://localhost:5000/exercises/add"
         console.log(exercise);
 
         axios.post(uri, exercise)

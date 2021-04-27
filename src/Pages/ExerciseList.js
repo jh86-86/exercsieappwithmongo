@@ -11,7 +11,7 @@ const Exercise = props => (
         <td>{props.exercise.duration}</td>
         <td>{props.exercise.date.substring(0,10)}</td>
          <td>
-             <a href="#" onClick={()=>{props.deleteExercise(props.exercise._id)}}>Delete</a> 
+             <button  onClick={()=>{props.deleteExercise(props.exercise._id)}}>Delete</button> 
         </td> 
    
     </tr>    
@@ -33,7 +33,7 @@ export default class ExerciseList extends Component{
 
     componentDidMount(){
         
-        axios.get('https://boostmk2.herokuapp.com/exercises/')
+        axios.get('http://localhost:5000/exercises/')
             .then(response => {
                 console.log(response.data)
                 this.setState({exercises: response.data})
@@ -46,8 +46,7 @@ export default class ExerciseList extends Component{
     
 
     deleteExercise(id){
-        let uri=process.env.REACT_APP_ROUTE_GET_EXERCISES_FOR_EXERCISELIST;
-         axios.delete(uri,+id)
+         axios.delete("http://localhost:5000/exercises",+id)
             .then(res => console.log(res.data));
         this.setState({
             exercises: this.state.exercises.filter(el => el._id !== id)//will rerender page on change of state, when el does not equal id that we are deleting will remove that id
@@ -61,7 +60,7 @@ export default class ExerciseList extends Component{
     }
     
 
-    //
+    
 
 
     render() {

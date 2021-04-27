@@ -46,9 +46,9 @@ return (
           <Route path="/createExercise">
             <CreateExercise />
           </Route>
-          <Route path="/editExercise">
+          {/* <Route path="/editExercise">
           <EditExerciseList />
-          </Route>
+          </Route> */}
           <Route path="/exerciseList">
             <ExerciseList />
           </Route>

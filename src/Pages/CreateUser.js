@@ -27,7 +27,7 @@ export default class CreateUser extends Component{
         }
 
         console.log(user);
-        const uri="https://boostmk2.herokuapp.com/users/add";
+        const uri="http://localhost:5000/users/add";
         //never used axios before but have underthehood headers,options,method
         axios.post(uri, user)
             .then(res => console.log(res.data));
