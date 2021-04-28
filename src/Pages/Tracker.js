@@ -94,6 +94,7 @@ function stopTracking(){
         <div key={i}>{journey}</div>
       ))}
          <p id="time-ptag"></p>
+         <p>Currently in development but does track coords. Hardcoded route for London currently</p>
     </div>
     )
     
