@@ -1,5 +1,6 @@
 import { MapContainer, TileLayer, Polyline } from 'react-leaflet';
 import React from 'react';
+import css from './map.module.css'
 
 
 
@@ -10,7 +11,7 @@ function Map({polyline, initialStart}){
   const limeOptions = { color: 'lime' }
 
     return(
-    <div id="mapid">
+    <div id={css.mapid}>
       <MapContainer center={initialStart} zoom={10} scrollWheelZoom={false} style={{height:400, width:"100%"}}>
   <TileLayer
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

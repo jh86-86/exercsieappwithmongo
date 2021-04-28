@@ -1,3 +1,4 @@
+import { map } from 'leaflet';
 import React, {useState,useEffect} from 'react';
 //import Map from '../components/LeafletMap/Leaflet'
 //import axios from 'axios'
@@ -9,7 +10,7 @@ const[route,setRoute]=useState([]);
 const[t,setT]=useState();
 
 
-const[mapArray,setMapArray]=useState([]);
+
 const[timer,setTimer]=useState(0);
 let count=0;
 
@@ -39,13 +40,14 @@ function sendGeoData(){
         navigator.geolocation.getCurrentPosition(position=>{  
             const lat= position.coords.latitude;
             const long= position.coords.longitude;
-            route.push({long,lat})
+            route.push({lat,long})
             console.log(route);
         })
     }
 }
 
 function startTracking(){
+    alert("tracking route. Press stop to see map of route taken");
     setT(setInterval(sendGeoData, 1000));
     setInterval(updateCount,1000);
     
@@ -53,10 +55,6 @@ function startTracking(){
 
 function updateCount(){
     count= count+1;
-    setTimer(count);
-    console.log(count+""+timer);
-    const timePtag= document.getElementById("time-ptag");
-    timePtag.innerText=timer;
 }
 
 
@@ -70,14 +68,13 @@ const polyline = [
     [52, 0],
 ]
 
+const[mapArray,setMapArray]=useState([<Map polyline={polyline} initialStart={[51.50, -0.09]}/>]);
 
 function stopTracking(){
     console.log('stopped tracking');
     setT(clearInterval(t));
-    setMapArray([<Map polyline={polyline} initialStart={initialStart}/> ]);
+    mapArray.push([<div className={"mapBox"}><Map polyline={route} initialStart={initialStart}/></div> ]);
     setTimer(count);
-    const timePtag= document.getElementById("time-ptag");
-    timePtag.innerText=timer;
 }
 
 
@@ -93,8 +90,9 @@ function stopTracking(){
          {mapArray.map((journey, i) => (
         <div key={i}>{journey}</div>
       ))}
-         <p id="time-ptag"></p>
-         <p>Currently in development but does track coords. Hardcoded route for London currently</p>
+         <p>Currently in development but does track coords. Hardcoded route for London currently to demonstrate the route. But if you
+             click on the start button and then press the stop it should bring up another map.
+         </p>
     </div>
     )
     
