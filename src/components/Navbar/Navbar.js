@@ -11,6 +11,7 @@ import ExerciseList from '../../Pages/ExerciseList';
 import Home from '../../Pages/Home';
 import css from './navbar.module.css';
 import Tracker from '../../Pages/Tracker';
+import Chatroom from '../../Pages/Chat'
 
 function Navbar(){
 return (
@@ -37,12 +38,18 @@ return (
             <li>
               <Link to="/tracker">Track exercise</Link>
             </li>
+            <li>
+              <Link to="/chatroom">Chatroom</Link>
+            </li>
           </ul>
         </nav>
         
 
         <div id="container">
         <Switch>
+          <Route path="/chatroom">
+            <Chatroom />
+          </Route>
           <Route path="/tracker">
             <Tracker />
           </Route>
