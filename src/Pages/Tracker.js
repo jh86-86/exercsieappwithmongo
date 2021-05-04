@@ -6,7 +6,7 @@ import Map from '../components/LeafletMap/Leaflet'
 
 function Tracker(){
 
-const[route,setRoute]=useState([]);
+const[route]=useState([]);
 const[t,setT]=useState();
 
 
@@ -24,7 +24,6 @@ useEffect(()=> {
            const lat= position.coords.latitude;
            const long= position.coords.longitude;
            setInitialStart([lat,long]);
-           setRoute([lat,long])
         
             })
         }
@@ -48,6 +47,7 @@ function sendGeoData(){
 }
 
 function startTracking(){
+ 
     alert("tracking route. Press stop to see map of route taken");
     setT(setInterval(sendGeoData, 1000));
     
