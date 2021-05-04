@@ -12,7 +12,7 @@ const[t,setT]=useState();
 
 
 const[timer,setTimer]=useState(0);
-let count=0;
+
 
 const[initialStart, setInitialStart]=useState()
 
@@ -24,7 +24,7 @@ useEffect(()=> {
            const lat= position.coords.latitude;
            const long= position.coords.longitude;
            setInitialStart([lat,long]);
-
+        
             })
         }
     }
@@ -49,13 +49,9 @@ function sendGeoData(){
 function startTracking(){
     alert("tracking route. Press stop to see map of route taken");
     setT(setInterval(sendGeoData, 1000));
-    setInterval(updateCount,1000);
     
 }
 
-function updateCount(){
-    count= count+1;
-}
 
 
 
@@ -74,7 +70,7 @@ function stopTracking(){
     console.log('stopped tracking');
     setT(clearInterval(t));
     mapArray.push([<div className={"mapBox"}><Map polyline={route} initialStart={initialStart}/></div> ]);
-    setTimer(count);
+    setTimer(timer+1);
 }
 
 
