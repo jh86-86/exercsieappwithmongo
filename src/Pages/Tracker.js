@@ -1,18 +1,42 @@
-
 import React, {useState,useEffect} from 'react';
-//import axios from 'axios'
+import axios from 'axios'
 import Map from '../components/LeafletMap/Leaflet'
 
 function Tracker(){
 
-const[route,setRoute]=useState([]); //gets the routes pushed in
+const[route,setRoute]=useState([
+    [52.5355987,
+    -1.8295397]
+]); //gets the routes pushed in
 const[t,setT]=useState();  //used to clear interval on tracking 
 
 const[startTime,setStartTime]=useState();
-const[finsihTime,setFinishTime]=useState();
+const[finishTime,setFinishTime]=useState();
 
 
-const[initialStart, setInitialStart]=useState()
+const[initialStart, setInitialStart]=useState();//initialstart position set by useEffect
+
+
+
+function submitToDatabase(){
+    const exercsieRoute ={
+        username: 'testuser',  //needs a state passed down with auth0
+        startTime: startTime,
+        finishTime: finishTime,
+        route: route
+    }
+
+    console.log(exercsieRoute);
+    let uri=process.env.REACT_APP_ATLAS_URI_MON;
+    //never used axios before but have underthehood headers,options,method
+    axios.post(`${uri}exerciseroutes/add`, exercsieRoute)
+        .then(res => console.log(res.data));
+}
+
+
+
+
+
 
 useEffect(()=> {
     function getStart(){
@@ -89,6 +113,7 @@ function resetTracking(){
 function timeGetter(){
     var today = new Date();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    console.log(typeof time)
     return time;
 }
 
@@ -98,6 +123,7 @@ function timeGetter(){
         <button onClick={startTracking}>Start tracking</button>
         <button onClick={stopTracking}>Stop tracking</button>
         <button onClick={resetTracking}>Reset</button>
+        <button onClick={submitToDatabase}>Save route to profile</button>
 
         {/* <Map polyline={polyline} initialStart={initialStart}/> */}
          {/* {route.map(coords=> <li>Lat: {coords.lat} Long: {coords.long}</li> )}  */}
@@ -105,7 +131,7 @@ function timeGetter(){
         <div key={i}>{journey}</div>
       ))}
       <p>Start time: {startTime}</p>
-      <p>Finish Time: {finsihTime}</p>
+      <p>Finish Time: {finishTime}</p>
    
     </div>
     )
