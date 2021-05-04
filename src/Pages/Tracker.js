@@ -1,4 +1,4 @@
-import { map } from 'leaflet';
+
 import React, {useState,useEffect} from 'react';
 //import Map from '../components/LeafletMap/Leaflet'
 //import axios from 'axios'
@@ -34,13 +34,13 @@ useEffect(()=> {
 
 
 function sendGeoData(){
-    setRoute({initialStart})
     if('geolocation' in navigator){
         console.log('geolocation available');
         navigator.geolocation.getCurrentPosition(position=>{  
             const lat= position.coords.latitude;
             const long= position.coords.longitude;
-            route.push({lat,long})
+            console.log(lat,long)
+            route.push([lat,long])
             console.log(route);
         })
     }
