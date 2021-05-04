@@ -24,6 +24,7 @@ useEffect(()=> {
            const lat= position.coords.latitude;
            const long= position.coords.longitude;
            setInitialStart([lat,long]);
+           setRoute([lat,long])
         
             })
         }
@@ -67,10 +68,12 @@ const polyline = [
 const[mapArray,setMapArray]=useState([<Map polyline={polyline} initialStart={[51.50, -0.09]}/>]);
 
 function stopTracking(){
+    setMapArray(mapArray)
     console.log('stopped tracking');
     setT(clearInterval(t));
     mapArray.push([<div className={"mapBox"}><Map polyline={route} initialStart={initialStart}/></div> ]);
     setTimer(timer+1);
+
 }
 
 
