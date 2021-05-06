@@ -6,20 +6,19 @@ import {
   Link
 } from "react-router-dom";
 import CreateExercise from '../../Pages/CreateExercise';
-import CreateUser from '../../Pages/CreateUser';
 import ExerciseList from '../../Pages/ExerciseList';
 import Home from '../../Pages/Home';
 import css from './navbar.module.css';
 import Tracker from '../../Pages/Tracker';
 import Chatroom from '../../Pages/Chat';
 import PreviousRuns from '../../Pages/Routes';
-import {useAuth0, User} from '@auth0/auth0-react';
+import {useAuth0} from '@auth0/auth0-react';
 import { UserContext } from "../UserContext/UseContext";
 
 function Navbar(){
 
   const {user, isAuthenticated} = useAuth0();
-  const [value,setValue]= useState("value from context")
+  const [dBUser,setDbUser]= useState(null);
 
 return (
   isAuthenticated &&(
@@ -40,9 +39,6 @@ return (
               <Link to="/createExercise">Create Exercise Log</Link>
             </li>
             <li>
-              <Link to="/createUser">create User</Link>
-            </li>
-            <li>
               <Link to="/tracker">Track exercise</Link>
             </li>
             <li>
@@ -58,7 +54,7 @@ return (
 
         <div id="container">
 
-        <UserContext.Provider value="hello from context">     
+        <UserContext.Provider value={{dBUser,setDbUser}}>     
         <Switch>
 
           <Route path="/previousroutes">
@@ -69,9 +65,6 @@ return (
           </Route>
           <Route path="/tracker">
             <Tracker />
-          </Route>
-          <Route path="/createUser">
-            <CreateUser />
           </Route>
           <Route path="/createExercise">
             <CreateExercise />
