@@ -12,7 +12,7 @@ function Map({polyline, initialStart}){
 
     return(
     <div id={css.mapid}>
-      <MapContainer center={initialStart} zoom={13} scrollWheelZoom={false} style={{height:400, width:"100%"}}>
+      <MapContainer center={initialStart} zoom={13} scrollWheelZoom={false} style={{height:200, width:200}}>
   <TileLayer
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

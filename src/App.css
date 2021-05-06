@@ -1,6 +1,23 @@
-
+#previous-routes{
+    
+    border-style: inset;
+    width:40vw;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    justify-content: center;
+    padding-left: 60px;
+}
 
 
 #mapid{
 
+}
+
+.logout-btn{
+    position: absolute;
+    bottom:   0;
+    margin-bottom:10px;
+    left: 45%;
 }

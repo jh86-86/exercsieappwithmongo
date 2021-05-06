@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,11 +11,18 @@ import ExerciseList from '../../Pages/ExerciseList';
 import Home from '../../Pages/Home';
 import css from './navbar.module.css';
 import Tracker from '../../Pages/Tracker';
-import Chatroom from '../../Pages/Chat'
+import Chatroom from '../../Pages/Chat';
+import PreviousRuns from '../../Pages/Routes';
+import {useAuth0, User} from '@auth0/auth0-react';
+import { UserContext } from "../UserContext/UseContext";
 
 function Navbar(){
-return (
 
+  const {user, isAuthenticated} = useAuth0();
+  const [value,setValue]= useState("value from context")
+
+return (
+  isAuthenticated &&(
     <Router >
       <div>
         <nav >
@@ -41,12 +48,22 @@ return (
             <li>
               <Link to="/chatroom">Chatroom</Link>
             </li>
+            <li>
+              <Link to="/previousroutes">Previous Routes</Link>
+            </li>
           </ul>
         </nav>
         
+        
 
         <div id="container">
+
+        <UserContext.Provider value="hello from context">     
         <Switch>
+
+          <Route path="/previousroutes">
+            <PreviousRuns />
+          </Route>
           <Route path="/chatroom">
             <Chatroom />
           </Route>
@@ -69,12 +86,14 @@ return (
             <Home />
           </Route>
         </Switch>
+             </UserContext.Provider>
         </div>
       </div>
     </Router>
-    
+  )
   );
 };
+
 
 
 export default Navbar;
