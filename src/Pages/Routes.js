@@ -11,6 +11,7 @@ function PreviousRuns() {
   const [allRoutes, setAllRoutes] = useState([]);
   const dbuser = useContext(UserContext);
 
+
   useEffect(() => {
     async function getAllRoutes() {
       let uri = process.env.REACT_APP_ATLAS_URI_MON;
@@ -21,7 +22,7 @@ function PreviousRuns() {
 
     }
     getAllRoutes();
-  }, []);
+  }, [dbuser]);
 
 
 
