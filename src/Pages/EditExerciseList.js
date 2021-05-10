@@ -3,6 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
+//decided not to use this but will keep it as an example of performing crud operations on the frontend
 
 export default class EditExercise extends Component {
   constructor(props) {

@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,useContext } from 'react';
 import axios from 'axios'
-import Map from '../components/LeafletMap/Leaflet'
+import Map from '../components/LeafletMap/Leaflet';
+import { UserContext } from "../components/UserContext/UseContext";
 
 function Tracker() {
 
+    const dbuser = useContext(UserContext);
+    console.log(dbuser.name + " this should be dbuser for tracker")
+
     const [route, setRoute] = useState([
-        [52.5355987,
-            -1.8295397]
     ]); //gets the routes pushed in
     const [t, setT] = useState();  //used to clear interval on tracking 
 
@@ -20,7 +22,7 @@ function Tracker() {
 
     function submitToDatabase() {
         const exercsieRoute = {
-            username: 'testuser',  //needs a state passed down with auth0
+            username: dbuser.name,  //needs a state passed down with auth0
             startTime: startTime,
             finishTime: finishTime,
             route: route
@@ -38,19 +40,19 @@ function Tracker() {
 
 
 
-    useEffect(() => {
-        function getStart() {
-            if ('geolocation' in navigator) {
-                console.log('geolocation available');
-                navigator.geolocation.getCurrentPosition(position => {
-                    const lat = position.coords.latitude;
-                    const long = position.coords.longitude;
-                    setInitialStart([lat, long]);
-                })
-            }
-        }
-        getStart();
-    }, []);
+    // useEffect(() => {
+    //     function getStart() {
+    //         if ('geolocation' in navigator) {
+    //             console.log('geolocation available');
+    //             navigator.geolocation.getCurrentPosition(position => {
+    //                 const lat = position.coords.latitude;
+    //                 const long = position.coords.longitude;
+    //                 setInitialStart([lat, long]);
+    //             })
+    //         }
+    //     }
+    //     getStart();
+    // }, []);
 
 
 
@@ -60,6 +62,8 @@ function Tracker() {
             navigator.geolocation.getCurrentPosition(position => {
                 const lat = position.coords.latitude;
                 const long = position.coords.longitude;
+                setInitialStart([lat,long])
+                console.log(initialStart)
                 route.push([lat, long])
                 console.log(route);
 
@@ -93,7 +97,7 @@ function Tracker() {
         setMapArray(mapArray)
         console.log('stopped tracking');
         setT(clearInterval(t));
-        setMapArray([<div className={"mapBox"}><Map polyline={route} initialStart={initialStart} /></div>]);
+        setMapArray([<div className={"mapBox"}><Map polyline={route} initialStart={route[0]} /></div>]);
         console.log(startTime);
         setFinishTime(timeGetter());
     }

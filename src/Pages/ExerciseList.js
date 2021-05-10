@@ -4,6 +4,7 @@ import axios from 'axios';
 
 
 
+
 const Exercise = props => (
     <tr>
         <td>{props.exercise.username}</td>

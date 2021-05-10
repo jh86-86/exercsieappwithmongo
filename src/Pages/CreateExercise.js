@@ -1,8 +1,10 @@
 
-import React, { Component } from 'react';
+import React, { Component,useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
+
+
 
 export default class CreateExercise extends Component {
     constructor(props) {
@@ -22,6 +24,8 @@ export default class CreateExercise extends Component {
             users: []
         }
     }
+
+  
 
     //hardcoded example prior to pulling from mongoDB
     //component did mount is  a react lifecycle method

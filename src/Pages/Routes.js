@@ -1,19 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Map from '../components/LeafletMap/Leaflet';
+import { UserContext } from "../components/UserContext/UseContext";
 
-
-
-
-
-
-
-
-
+//a page which displays revious runs
 
 
 function PreviousRuns() {
 
+
   const [allRoutes, setAllRoutes] = useState([]);
+  const dbuser = useContext(UserContext);
+  console.log(dbuser.name + " this should be dbuser for tracker")
 
   useEffect(() => {
     async function getAllRoutes() {

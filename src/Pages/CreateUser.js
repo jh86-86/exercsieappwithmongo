@@ -1,7 +1,8 @@
-import React, { Component,useContext } from 'react';
+import React, { Component} from 'react';
 import axios from 'axios';
-import { UserContext } from '../components/UserContext/UseContext';
 
+//create user page which has been depreciated as i now use auth zero but kept it as an
+//example of component based react for my own personal learning
 
 export default class CreateUser extends Component {
     constructor(props) {
@@ -55,7 +56,7 @@ export default class CreateUser extends Component {
     render() {
         return (
             <div className="container">
-                <h3>Create New User</h3>
+                <h3>Create New User for Events</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Username: </label>
