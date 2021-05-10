@@ -10,7 +10,7 @@ import ExerciseList from '../../Pages/ExerciseList';
 import Home from '../../Pages/Home';
 import css from './navbar.module.css';
 import Tracker from '../../Pages/Tracker';
-import Chatroom from '../../Pages/Chat';
+//import Chatroom from '../../Pages/UnusedPages/Chat';
 import PreviousRuns from '../../Pages/Routes';
 import { useAuth0 } from '@auth0/auth0-react';
 import { UserContext } from "../UserContext/UseContext";
@@ -40,9 +40,9 @@ function Navbar() {
               <li>
                 <Link to="/tracker">Track exercise</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/chatroom">Chatroom</Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/previousroutes">Previous Routes</Link>
               </li>
@@ -59,9 +59,9 @@ function Navbar() {
                 <Route path="/previousroutes">
                   <PreviousRuns />
                 </Route>
-                <Route path="/chatroom">
-                  <Chatroom />
-                </Route>
+                {/* <Route path="/chatroom">
+                  <Chatroom /> */}
+                {/* </Route> */}
                 <Route path="/tracker">
                   <Tracker />
                 </Route>

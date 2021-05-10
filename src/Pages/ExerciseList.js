@@ -11,9 +11,9 @@ const Exercise = props => (
         <td>{props.exercise.description}</td>
         <td>{props.exercise.duration}</td>
         <td>{props.exercise.date.substring(0, 10)}</td>
-        <td>
+        {/* <td>
             <button onClick={() => { props.deleteExercise(props.exercise._id) }}>Delete</button>
-        </td>
+        </td> */}
 
     </tr>
 )
@@ -69,6 +69,7 @@ export default class ExerciseList extends Component {
         return (
             <div className="container">
                 <h3>Logged Exercises</h3>
+                <h4>See what you and other users have been up to:</h4>
                 <table className="table">
                     <thead className="thead-light">
                         <tr>
@@ -76,7 +77,6 @@ export default class ExerciseList extends Component {
                             <th>Description</th>
                             <th>Duration</th>
                             <th>Date</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>

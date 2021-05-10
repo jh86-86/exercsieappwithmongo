@@ -16,7 +16,7 @@ function Tracker() {
     const [finishTime, setFinishTime] = useState();
 
 
-    const [initialStart, setInitialStart] = useState();//initialstart position set by useEffect
+    const [initialStart, setInitialStart] = useState();//initialstart position for map to center on
 
 
 
@@ -33,26 +33,13 @@ function Tracker() {
         //never used axios before but have underthehood headers,options,method
         axios.post(`${uri}exerciseroutes/add`, exercsieRoute)
             .then(res => console.log(res.data));
+
+        alert("Saved route.Go to routes to see it.")
     }
 
 
 
 
-
-
-    // useEffect(() => {
-    //     function getStart() {
-    //         if ('geolocation' in navigator) {
-    //             console.log('geolocation available');
-    //             navigator.geolocation.getCurrentPosition(position => {
-    //                 const lat = position.coords.latitude;
-    //                 const long = position.coords.longitude;
-    //                 setInitialStart([lat, long]);
-    //             })
-    //         }
-    //     }
-    //     getStart();
-    // }, []);
 
 
 
@@ -80,19 +67,8 @@ function Tracker() {
 
 
 
-
-    // const polyline = [
-    //     [51.50, -0.09],
-    //     [51.51, -0.1],
-    //     [51.58, -0.05],
-    //     [51.70, -0.1],
-    //     [51.80, -0.20],
-    //     [52, 0],
-    // ]
-
     const [mapArray, setMapArray] = useState([]);
-    //const[mapArray,setMapArray]=useState([<Map polyline={polyline} initialStart={[51.50, -0.09]}/>]);
-
+    
     function stopTracking() {
         setMapArray(mapArray)
         console.log('stopped tracking');
@@ -100,6 +76,7 @@ function Tracker() {
         setMapArray([<div className={"mapBox"}><Map polyline={route} initialStart={route[0]} /></div>]);
         console.log(startTime);
         setFinishTime(timeGetter());
+        alert("stopped tracking. If you want to save route press save")
     }
 
     function resetTracking() {
@@ -110,6 +87,7 @@ function Tracker() {
                 const lat = position.coords.latitude;
                 const long = position.coords.longitude;
                 setInitialStart([lat, long]);
+                alert("Map reset");
             })
         }
     }
@@ -128,9 +106,7 @@ function Tracker() {
             <button onClick={stopTracking}>Stop tracking</button>
             <button onClick={resetTracking}>Reset</button>
             <button onClick={submitToDatabase}>Save route to profile</button>
-
-            {/* <Map polyline={polyline} initialStart={initialStart}/> */}
-            {/* {route.map(coords=> <li>Lat: {coords.lat} Long: {coords.long}</li> )}  */}
+         
             {mapArray.map((journey, i) => (
                 <div key={i}>{journey}</div>
             ))}
