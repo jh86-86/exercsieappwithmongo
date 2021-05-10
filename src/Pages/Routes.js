@@ -1,6 +1,7 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Map from '../components/LeafletMap/Leaflet';
 import { UserContext } from "../components/UserContext/UseContext";
+import axios from 'axios';
 
 //a page which displays revious runs
 
@@ -11,18 +12,35 @@ function PreviousRuns() {
   const [allRoutes, setAllRoutes] = useState([]);
   const dbuser = useContext(UserContext);
 
+  // function getRoutes(){
+  // let uri = process.env.REACT_APP_ATLAS_URI_MON;
+  //       axios.get(`${uri}exerciseroutes/searchname?username=${dbuser.name}`)
+  //           .then(response => {
+  //               console.log(response.data)
+  //               setAllRoutes(response.data)
+  //           })
+  //           .catch((error) => {
+  //               console.log(error);
+  //           })
+  //         };
+
+  //   getRoutes();
 
   useEffect(() => {
     async function getAllRoutes() {
       let uri = process.env.REACT_APP_ATLAS_URI_MON;
-      let response = await fetch(uri + `exerciseroutes/searchname?username=${dbuser.name}`);
-      let data = await response.json();
-      setAllRoutes(data);
-      console.log(data);
+      axios.get(`${uri}exerciseroutes/searchname?username=${dbuser.name}`)
+                .then(response => {
+                    console.log(response.data)
+                    setAllRoutes(response.data)
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
 
     }
     getAllRoutes();
-  }, [dbuser]);
+  },[dbuser]);
 
 
 
