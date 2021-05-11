@@ -14,7 +14,7 @@ function App() {
     <div>
       <LoginButton />
       <Navbar />
-    </div>
+     </div>
 
   );
 }

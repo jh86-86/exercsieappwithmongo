@@ -1,8 +1,21 @@
+/* buttons on the routes and tracker page*/
+button{
+  background-color: gold;
+  margin: 10px;
+  border-radius: 4px;
+}
+
+/*route cards*/
 #routes-container{
   margin: 0 auto;
   width: 40%;
 }
 
+/*table displaying activities*/
+.table{
+  width:80vw;
+  font-size: 12px;
+}
 
 
 
@@ -35,6 +48,11 @@
   width: 80%;
 }
 
+.table{
+  width:200px;
+  font-size: 10px;
+}
+
     
 }
 @media screen and (max-width: 280px) {
@@ -44,18 +62,33 @@
   margin: 0 auto;
   width: 80%;
 }
+.table{
+  width:180px;
+  font-size: 8px;
+}
+}
+@media screen and (max-width: 320px) {
+
+
+#routes-container{
+  margin: 0 auto;
+  width: 80%;
+}
+.table{
+  width:160px;
+  font-size: 8px;
+}
+
 
     
 }
 
 
-.logout-btn{
-    position: absolute;
-    bottom:   0;
-    margin-bottom:10px;
-    left: 45%;
-}
+
 
 .container{
  margin-top: 30px;
 }
+
+
+
