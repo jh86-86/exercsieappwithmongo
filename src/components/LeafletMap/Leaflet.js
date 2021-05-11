@@ -11,8 +11,8 @@ function Map({polyline, initialStart}){
   const limeOptions = { color: 'lime' }
 
     return(
-    <div id={css.mapid}>
-      <MapContainer center={initialStart} zoom={13} scrollWheelZoom={false} style={{height:200, width:200}}>
+    <div >
+      <MapContainer id={css.mapid} center={initialStart} zoom={13} scrollWheelZoom={false}>
   <TileLayer
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

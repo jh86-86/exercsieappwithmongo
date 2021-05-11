@@ -31,24 +31,24 @@ function Navbar() {
               <li>
                 <Link to="/">
                   <span class={css.text}>Home</span>
-                  <span class={css.icon}><img src="https://img.icons8.com/android/24/000000/home.png" /></span>
+                  <span class={css.icon}><img alt="home" src="https://img.icons8.com/android/24/000000/home.png" /></span>
                 </Link>
               </li>
               <li>
                 <Link to="/exerciseList">
                   <span class={css.text}>Tracker</span>
-                  <span class={css.icon}><img src="https://img.icons8.com/plumpy/24/000000/log.png" /></span>
+                  <span class={css.icon}><img alt="tracker" src="https://img.icons8.com/plumpy/24/000000/log.png" /></span>
                 </Link>
               </li>
               <li>
                 <Link to="/createExercise"> 
                 <span class={css.text}>Create Exercise</span>
-                  <span class={css.icon}><img src="https://img.icons8.com/material-sharp/24/000000/add-rule.png" /></span></Link>
+                  <span class={css.icon}><img alt="create exercise" src="https://img.icons8.com/material-sharp/24/000000/add-rule.png" /></span></Link>
               </li>
               <li>
                 <Link to="/tracker"> 
                 <span class={css.text}>Track Exercise</span>
-                  <span class={css.icon}><img src="https://img.icons8.com/plumpy/24/000000/track-order.png"/></span></Link>
+                  <span class={css.icon}><img alt="track exercise" src="https://img.icons8.com/plumpy/24/000000/track-order.png"/></span></Link>
               </li>
               {/* <li>
                 <Link to="/chatroom">Chatroom</Link>
@@ -56,7 +56,7 @@ function Navbar() {
               <li>
                 <Link to="/previousroutes">
                 <span class={css.text}>Previous Routes</span>
-                  <span class={css.icon}><img src="https://img.icons8.com/metro/26/000000/running.png"/></span>
+                  <span class={css.icon}><img alt="Previous routes" src="https://img.icons8.com/metro/26/000000/running.png"/></span>
                 </Link>
               </li>
             </ul>
@@ -64,7 +64,7 @@ function Navbar() {
 
 
 
-          <div id="container">
+          <div id={css.container}>
 
 
             <UserContext.Provider value={dbUser}>

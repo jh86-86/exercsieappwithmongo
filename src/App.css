@@ -1,7 +1,27 @@
+#routes-container{
+  margin: 0 auto;
+  width: 40%;
+}
+
+
+
+
 #previous-routes{
     
     border-style: inset;
     width:40vw;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 60px;
+}
+
+@media screen and (max-width: 600px) {
+
+  #previous-routes{
+    
+    width:80vw;
     height: 400px;
     display: flex;
     flex-direction: column;
@@ -10,10 +30,24 @@
     padding-left: 60px;
 }
 
-
-#mapid{
-
+#routes-container{
+  margin: 0 auto;
+  width: 80%;
 }
+
+    
+}
+@media screen and (max-width: 280px) {
+
+
+#routes-container{
+  margin: 0 auto;
+  width: 80%;
+}
+
+    
+}
+
 
 .logout-btn{
     position: absolute;

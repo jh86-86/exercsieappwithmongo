@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios'
 import Map from '../components/LeafletMap/Leaflet';
 import { UserContext } from "../components/UserContext/UseContext";
@@ -49,7 +49,7 @@ function Tracker() {
             navigator.geolocation.getCurrentPosition(position => {
                 const lat = position.coords.latitude;
                 const long = position.coords.longitude;
-                setInitialStart([lat,long])
+                setInitialStart([lat, long])
                 console.log(initialStart)
                 route.push([lat, long])
                 console.log(route);
@@ -68,7 +68,7 @@ function Tracker() {
 
 
     const [mapArray, setMapArray] = useState([]);
-    
+
     function stopTracking() {
         setMapArray(mapArray)
         console.log('stopped tracking');
@@ -106,7 +106,7 @@ function Tracker() {
             <button onClick={stopTracking}>Stop tracking</button>
             <button onClick={resetTracking}>Reset</button>
             <button onClick={submitToDatabase}>Save route to profile</button>
-         
+
             {mapArray.map((journey, i) => (
                 <div key={i}>{journey}</div>
             ))}
