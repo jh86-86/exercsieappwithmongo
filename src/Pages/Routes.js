@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from 'react';
 import Map from '../components/LeafletMap/Leaflet';
 import { UserContext } from "../components/UserContext/UseContext";
 import axios from 'axios';
-
+import css from './cssmodules/routes.modules.css';
 //a page which displays revious runs
 
 
@@ -45,12 +45,13 @@ function PreviousRuns() {
 
 
   return (
-    <div>
+    <div id="routes-container">
 
         <div>
           <h1>Previous routes</h1>
           {allRoutes.map((journey, i) => (
-            <div id="previous-routes" key={i}><Map polyline={journey.route} initialStart={journey.route[0]} />
+            <div id="previous-routes" key={i}>
+              <Map polyline={journey.route} initialStart={journey.route[0]} />
               <p>User: {journey.username}</p>
               <p>Start time: {journey.startTime}</p>
               <p>Finish Time: {journey.finishTime}</p>

@@ -1,3 +1,5 @@
+
+
 .navbar{
     display: flex;
     flex-direction: row;
@@ -13,14 +15,16 @@
     display: flex;
     flex-direction: row;
     color: black;
+    background-color: #1bc5cb;
     text-decoration: none !important;
     list-style-type: none;
     padding: 10px;
-    padding-left: 30px;
+    padding-left: 20px;
 
 }
 
 li a{  color: black;
+    background-color: #1bc5cb;
     text-decoration: none !important;
     list-style-type: none;
 }
@@ -28,3 +32,32 @@ li a{  color: black;
 li a:hover{
     color:slategrey
 }
+
+.icon {
+    display:none;
+}
+.text {
+    display:inline-block;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .navbar  li{
+        padding: 10px;
+        padding-left: 20px;
+    
+    }
+
+    .icon {
+        display:inline-block;
+    }
+    .text {
+        display:none;
+    }
+    
+    li a:hover{
+        color:gold
+    }
+    
+  }
