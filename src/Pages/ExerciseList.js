@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
+//using component based react to learn alittle bit about it
 
 
 
@@ -11,7 +11,9 @@ const Exercise = props => (
         <td>{props.exercise.description}</td>
         <td>{props.exercise.duration}</td>
         <td>{props.exercise.date.substring(0, 10)}</td>
-        {/* <td>
+
+        {/* An option to delete but decided against it 
+        <td>
             <button onClick={() => { props.deleteExercise(props.exercise._id) }}>Delete</button>
         </td> */}
 

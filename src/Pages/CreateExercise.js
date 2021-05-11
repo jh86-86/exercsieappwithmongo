@@ -94,7 +94,7 @@ function CreateExercise() {
                     </div>
                 </div>
                 <div className="form-group">
-                    <input type="submit" value="Create exercise log" className="btn btn-primary" />
+                    <input type="submit" value="Create exercise log" className="btn btn-primary" style={{backgroundColor: "gold", color:'black', border:'2px solid black'}}/>
                 </div>
             </form>
         </div>

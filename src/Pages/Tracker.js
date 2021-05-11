@@ -14,6 +14,7 @@ function Tracker() {
 
     const [startTime, setStartTime] = useState();
     const [finishTime, setFinishTime] = useState();
+    
 
 
     const [initialStart, setInitialStart] = useState();//initialstart position for map to center on
@@ -110,8 +111,8 @@ function Tracker() {
             {mapArray.map((journey, i) => (
                 <div key={i}>{journey}</div>
             ))}
-            <p>Start time: {startTime}</p>
-            <p>Finish Time: {finishTime}</p>
+            <p><strong>Start time:</strong> {startTime}</p>
+            <p><strong>Finish Time:</strong> {finishTime}</p>
 
         </div>
     )
