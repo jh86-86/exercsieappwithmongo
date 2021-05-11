@@ -28,3 +28,27 @@ li a{  color: black;
 li a:hover{
     color:slategrey
 }
+
+.icon {
+    display:none;
+}
+.text {
+    display:inline-block;
+}
+
+
+
+@media screen and (max-width: 600px) {
+
+    .icon {
+        display:inline-block;
+    }
+    .text {
+        display:none;
+    }
+    
+    li a:hover{
+        color:gold
+    }
+    
+  }
