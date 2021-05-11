@@ -3,6 +3,10 @@
   width: 40%;
 }
 
+.table{
+  width:80vw;
+  font-size: 12px;
+}
 
 
 
@@ -35,6 +39,11 @@
   width: 80%;
 }
 
+.table{
+  width:200px;
+  font-size: 10px;
+}
+
     
 }
 @media screen and (max-width: 280px) {
@@ -44,18 +53,41 @@
   margin: 0 auto;
   width: 80%;
 }
+.table{
+  width:180px;
+  font-size: 8px;
+}
+}
+@media screen and (max-width: 320px) {
+
+
+#routes-container{
+  margin: 0 auto;
+  width: 80%;
+}
+.table{
+  width:160px;
+  font-size: 8px;
+}
+
 
     
 }
 
 
 .logout-btn{
+  background-color: gold;
     position: absolute;
     bottom:   0;
     margin-bottom:10px;
     left: 45%;
-}
+} 
+
+
 
 .container{
  margin-top: 30px;
 }
+
+
+
