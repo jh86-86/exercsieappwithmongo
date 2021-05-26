@@ -6,10 +6,11 @@ function LogoutButton(){
     const {logout, isAuthenticated}= useAuth0();
     return (
         isAuthenticated&&(
-            
-            <button className={css.btn} onClick={logout}>
+            <div>
+            <button data-testid="logoutButton" className={css.btn} onClick={logout}>
             Logout
         </button>
+        </div>
         )
     )
 }
